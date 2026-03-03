@@ -16,6 +16,11 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
+        with:
+          node-version: 24
+
       - name: Checkout cursor plugin repo
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
@@ -32,6 +37,9 @@ jobs:
         run: |
           rm -rf skills
           cp -r agent-skills/skills .
+
+      - name: Validate plugin and skills
+        run: node scripts/validate.mjs
 
       - name: Create Pull Request
         id: cpr

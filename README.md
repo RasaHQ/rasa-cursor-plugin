@@ -42,6 +42,14 @@ Skills are maintained in [rasa-agent-skills](https://github.com/RasaHQ/rasa-agen
 - **Sync workflow** (this repo): [Sync skills from agent-skills](.github/workflows/sync-skills.yml) runs on `repository_dispatch` or manually (**Actions → Sync skills from agent-skills → Run workflow**). It copies `skills/` from rasa-agent-skills and opens a **PR to main**; merge that PR to publish updates.
 - **Trigger** (rasa-agent-skills): Pushes to `main` that change `skills/**` can send `repository_dispatch` to this repo. To enable that, add secret **CURSOR_PLUGIN_DISPATCH_TOKEN** in rasa-agent-skills (PAT with access to this repo: classic **repo** or **public_repo**, or fine-grained **Contents** + **Metadata** on this repository).
 
+**Run validation locally** (plugin manifest + skill frontmatter):
+
+```bash
+node scripts/validate.mjs
+```
+
+Run from the repo root. The same validation runs in CI after the sync workflow copies skills.
+
 ## License
 
 Apache-2.0
