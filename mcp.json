@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "rasa": {
+      "command": "rasa",
+      "args": ["tools", "run"]
+    }
+  }
+}
