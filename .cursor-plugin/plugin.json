@@ -1,0 +1,12 @@
+{
+  "name": "rasa-cursor-plugin",
+  "displayName": "Rasa Cursor Plugin",
+  "version": "0.1.0",
+  "description": "Rasa CALM agent skills for Cursor: build flows, configure assistants, write custom actions, manage slots, and more.",
+  "author": {
+    "name": "Rasa",
+    "email": "infrasecteam@rasa.com"
+  },
+  "license": "Apache-2.0",
+  "keywords": ["rasa", "calm", "conversational-ai", "flows", "skills"]
+}
