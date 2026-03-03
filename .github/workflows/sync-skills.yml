@@ -1,0 +1,65 @@
+# Sync skills from rasa-agent-skills into this plugin repo and open a PR to main.
+# Triggered by repository_dispatch from rasa-agent-skills (on push to main) or manually (workflow_dispatch).
+
+name: Sync skills from agent-skills
+
+on:
+  repository_dispatch:
+    types: [sync-skills]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-26.04
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
+        with:
+          node-version: 24
+
+      - name: Checkout cursor plugin repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: main
+
+      - name: Checkout agent-skills repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          repository: ${{ github.repository_owner }}/rasa-agent-skills
+          path: agent-skills
+          ref: main
+
+      - name: Copy skills from agent-skills
+        run: |
+          rm -rf skills
+          cp -r agent-skills/skills .
+
+      - name: Validate plugin and skills
+        run: node scripts/validate.mjs
+
+      - name: Set sync branch name
+        id: branch
+        run: echo "name=sync/skills-$(date -u +%Y%m%d-%H%M)" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
+        with:
+          branch: ${{ steps.branch.outputs.name }}
+          commit-message: |
+            Sync skills from rasa-agent-skills
+
+            Skills copied from the Rasa agent skills source of truth.
+          title: "Sync skills from rasa-agent-skills"
+          body: |
+            ## Sync skills from rasa-agent-skills
+
+            This PR updates the `skills/` directory from the [rasa-agent-skills](https://github.com/${{ github.repository_owner }}/rasa-agent-skills) repository (source of truth).
+
+            **Triggered by:** ${{ github.event_name }}
+
+            Please review the diff and merge to update the published Cursor plugin.
