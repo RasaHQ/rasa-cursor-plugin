@@ -5,7 +5,7 @@
   "description": "Rasa CALM agent skills for Cursor: build flows, configure assistants, write custom actions, manage slots, and more.",
   "author": {
     "name": "Rasa",
-    "email": "infrasecteam@rasa.com"
+    "email": "swift@rasa.com"
   },
   "license": "Apache-2.0",
   "keywords": ["rasa", "calm", "conversational-ai", "flows", "skills"]
