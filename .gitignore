@@ -1,0 +1,4 @@
+# OS and editor
+.vscode
+
+# Do not ignore skills/ — CI syncs skills from rasa-agent-skills and commits them
