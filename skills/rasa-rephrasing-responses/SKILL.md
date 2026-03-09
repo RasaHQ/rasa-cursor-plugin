@@ -7,7 +7,8 @@ description: >
 license: Apache-2.0
 metadata:
   author: rasa
-  version: "3.x"
+  version: "0.1.0"
+  rasa_version: ">=3.11.0"
   docs-url: https://rasa.com/docs/reference/primitives/contextual-response-rephraser/
 ---
 
@@ -136,7 +137,3 @@ responses:
           Suggested: {{suggested_response}}
           Rephrased:
 ```
-
-## Full reference
-
-<!-- TODO: Add references/slots-reference.md with complete syntax documentation -->
