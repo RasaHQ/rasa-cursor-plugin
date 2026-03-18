@@ -8,7 +8,8 @@ description: >
 license: Apache-2.0
 metadata:
   author: rasa
-  version: "3.x"
+  version: "0.1.0"
+  rasa_version: ">=3.13.0"
   docs-url: https://rasa.com/docs/pro/build/configuring-enterprise-search
 ---
 
@@ -94,13 +95,13 @@ Corresponding model groups in `endpoints.yml`:
 model_groups:
   - id: enterprise_search_llm
     models:
-      - provider: openai
-        model: gpt-4.1-mini-2025-04-14
+      - provider: <your-provider>                    # e.g. openai, azure, self-hosted
+        model: <your-llm-model>
 
   - id: enterprise_search_embeddings
     models:
-      - provider: openai
-        model: text-embedding-3-large               # default ingestion model
+      - provider: <your-provider>
+        model: <your-embedding-model>                # must match ingestion model
 ```
 
 Extractive search Q&A ingestion format — `page_content` holds the question
@@ -287,7 +288,3 @@ vector_store:
   api_key: ${SEARCH_API_KEY}
   collection: my_collection
 ```
-
-## Full reference
-
-<!-- TODO: Add references/enterprise-search-reference.md with complete configuration documentation -->

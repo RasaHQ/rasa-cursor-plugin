@@ -7,7 +7,8 @@ description: >
 license: Apache-2.0
 metadata:
   author: rasa
-  version: "3.x"
+  version: "0.1.0"
+  rasa_version: ">=3.11.0"
   docs-url: https://rasa.com/docs/reference/primitives/contextual-response-rephraser/
 ---
 
@@ -40,13 +41,13 @@ altering meaning.
 nlg:
   type: rephrase
   llm:
-    model_group: gpt-4o-2024-11-20-openai-model  # optional, defaults to gpt-4o-2024-11-20
+    model_group: my_llm               # optional, defaults to the default model
 
 model_groups:
-  - id: gpt-4o-2024-11-20-openai-model
+  - id: my_llm
     models:
-      - provider: openai
-        model: gpt-4o-2024-11-20
+      - provider: <your-provider>     # e.g. openai, azure, self-hosted
+        model: <your-llm-model>
         temperature: 0.3              # 0.0–2.0, default 0.3
 ```
 
@@ -136,7 +137,3 @@ responses:
           Suggested: {{suggested_response}}
           Rephrased:
 ```
-
-## Full reference
-
-<!-- TODO: Add references/slots-reference.md with complete syntax documentation -->
