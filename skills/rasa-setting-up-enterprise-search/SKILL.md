@@ -8,7 +8,8 @@ description: >
 license: Apache-2.0
 metadata:
   author: rasa
-  version: "3.x"
+  version: "0.1.0"
+  rasa_version: ">=3.13.0"
   docs-url: https://rasa.com/docs/pro/build/configuring-enterprise-search
 ---
 
@@ -287,7 +288,3 @@ vector_store:
   api_key: ${SEARCH_API_KEY}
   collection: my_collection
 ```
-
-## Full reference
-
-<!-- TODO: Add references/enterprise-search-reference.md with complete configuration documentation -->
