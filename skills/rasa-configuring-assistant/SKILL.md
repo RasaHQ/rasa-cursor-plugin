@@ -7,7 +7,8 @@ description: >
 license: Apache-2.0
 metadata:
   author: rasa
-  version: "3.x"
+  version: "0.1.0"
+  rasa_version: ">=3.13.0"
   docs-url: https://rasa.com/docs/pro/build/configuring-assistant
 ---
 
@@ -58,10 +59,10 @@ embeddings, and input limits:
 pipeline:
   - name: CompactLLMCommandGenerator
     llm:
-      model_group: openai_llm              # references model_groups in endpoints.yml
+      model_group: my_llm                  # references model_groups in endpoints.yml
     flow_retrieval:
       embeddings:
-        model_group: openai_embeddings     # references model_groups in endpoints.yml
+        model_group: my_embeddings         # references model_groups in endpoints.yml
     user_input:
       max_characters: 420
 ```
@@ -116,15 +117,15 @@ multi-deployment routing, failover, and self-hosted models.
 
 ```yaml
 model_groups:
-  - id: openai_llm
+  - id: my_llm
     models:
-      - provider: openai
-        model: gpt-4o-2024-11-20
+      - provider: <your-provider>       # e.g. openai, azure, self-hosted
+        model: <your-llm-model>
 
-  - id: openai_embeddings
+  - id: my_embeddings
     models:
-      - provider: openai
-        model: text-embedding-3-large
+      - provider: <your-provider>
+        model: <your-embedding-model>
 ```
 
 ### Action endpoint
@@ -159,6 +160,11 @@ nlg:
 The rephraser (`nlg: type: rephrase`) is covered by the `rasa-rephrasing-responses`
 skill.
 
+### MCP servers
+
+MCP server configuration (`mcp_servers` in `endpoints.yml`) is covered by the
+`rasa-configuring-mcp-server` skill.
+
 ### Silence handling
 
 Controls how long the assistant waits before assuming the user is silent. Only applies
@@ -168,7 +174,3 @@ to voice-stream channels (Twilio, Browser Audio, Genesys, Jambonz, Audiocodes).
 interaction_handling:
   global_silence_timeout: 7    # seconds, default: 7
 ```
-
-## Full reference
-
-<!-- TODO: Add references/config-reference.md with complete syntax documentation -->
