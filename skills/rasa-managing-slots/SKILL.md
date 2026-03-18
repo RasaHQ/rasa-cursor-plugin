@@ -7,7 +7,8 @@ description: >
 license: Apache-2.0
 metadata:
   author: rasa
-  version: "3.x"
+  version: "0.1.0"
+  rasa_version: ">=3.12.0"
   docs-url: https://rasa.com/docs/reference/primitives/slots/
 ---
 
@@ -183,7 +184,3 @@ different conventions, match those instead.
 - Prefix booleans with `is_` or `has_`: `is_verified`, `has_insurance`
 - Avoid special characters `(`, `)`, `=`, `,` in slot names — they break response button
   payloads
-
-## Full reference
-
-<!-- TODO: Add references/slots-reference.md with complete syntax documentation -->
