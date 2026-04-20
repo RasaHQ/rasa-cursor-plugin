@@ -7,7 +7,8 @@ description: >
 license: Apache-2.0
 metadata:
   author: rasa
-  version: "3.x"
+  version: "0.1.0"
+  rasa_version: ">=3.7.0"
   docs-url: https://rasa.com/docs/reference/primitives/responses/
 ---
 
@@ -241,7 +242,3 @@ responses:
     - text: "What would you like to do today?"
       allow_interruptions: true      # default
 ```
-
-## Full reference
-
-<!-- TODO: Add references/responses-reference.md with complete syntax documentation -->
