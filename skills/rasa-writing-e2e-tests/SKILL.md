@@ -7,7 +7,8 @@ description: >
 license: Apache-2.0
 metadata:
   author: rasa
-  version: "3.x"
+  version: "0.1.0"
+  rasa_version: ">=3.12.0"
   docs-url: https://rasa.com/docs/pro/testing/evaluating-assistant
 ---
 
@@ -160,17 +161,17 @@ Specify `utter_source` to target a specific component.
         ground_truth: "Items can be returned within 30 days of purchase."
 ```
 
-The LLM Judge model is configured in `conftest.yml` at the project root (defaults to
-OpenAI `gpt-4.1-mini`):
+The LLM Judge model is configured in `conftest.yml` at the project root (if not
+specified, Rasa falls back to its default model):
 
 ```yaml
 llm_judge:
   llm:
-    provider: openai
-    model: "gpt-4.1-mini-2025-04-14"
+    provider: <your-provider>           # e.g. openai, azure, self-hosted
+    model: <your-llm-model>
   embeddings:
-    provider: openai
-    model: "text-embedding-3-large"
+    provider: <your-provider>
+    model: <your-embedding-model>
 ```
 
 ## Fixtures
@@ -258,7 +259,3 @@ If custom actions are not stubbed, start the action server first:
 rasa run actions &
 rasa test e2e
 ```
-
-## Full reference
-
-<!-- TODO: Add references/e2e-reference.md with complete syntax documentation -->
