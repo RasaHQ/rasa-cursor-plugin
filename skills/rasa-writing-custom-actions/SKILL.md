@@ -7,7 +7,8 @@ description: >
 license: Apache-2.0
 metadata:
   author: rasa
-  version: "3.x"
+  version: "0.1.0"
+  rasa_version: ">=3.7.0"
   docs-url: https://rasa.com/docs/reference/integrations/action-server/actions
 ---
 
@@ -22,6 +23,10 @@ conversation proceeds (branching, conditions, collect steps). Actions do the *ra
 (fetch data, call APIs, query databases) and return results via `SlotSet` events for
 flows to use. Keep each action focused on one responsibility — `action_search_products`
 searches, `action_place_order` places an order.
+
+If all you need is a simple API call with slot-based input/output mappings and the API
+is available on an MCP server, consider using an MCP tool call instead — see 
+`rasa-calling-mcp-tools-from-flows`.
 
 ## Workflow
 
@@ -261,7 +266,3 @@ actions:
   - action_ask_delivery_option
   - validate_phone_number
 ```
-
-## Full reference
-
-<!-- TODO: Add references/actions-reference.md with complete syntax documentation -->
